@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Plushie Runner - Lainika</title>
+    <!-- Add Font Awesome Pro for better icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Add Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Add cute font -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <!-- Add Animate.css for better animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #ff69b4;
+            --primary-light: #ff8dc7;
+            --secondary: #87CEEB;
+            --accent: #FFD700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Fredoka One', cursive;
+            background: #f0f0f0;
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Fix for mobile Safari */
+        html {
+            height: -webkit-fill-available;
+        }
+
+        .game-container {
+            width: 100%;
+            height: calc(100vh - 60px); /* Subtract nav height */
+            height: calc((var(--vh, 1vh) * 100) - 60px);
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        canvas {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: block;
+            height: 100%;
+            max-height: 100%;
+            width: auto;
+            touch-action: none;
+        }
+
+        .menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            min-width: 320px;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu.hidden {
+            display: none;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 2.5em;
+            text-shadow: 3px 3px 0px rgba(255,105,180,0.2);
+        }
+
+        .score {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2em;
+            box-shadow: 0 5px 15px rgba(255,105,180,0.2);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .score i {
+            color: var(--accent);
+        }
+
+        button {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            font-family: 'Fredoka One', cursive;
+            box-shadow: 0 5px 15px rgba(255,105,180,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255,105,180,0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .instructions {
+            margin: 20px 0;
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255,105,180,0.1);
+            border-radius: 15px;
+        }
+
+        .instruction-item i {
+            color: var(--primary);
+            font-size: 1.3em;
+        }
+
+        .nav-bar {
+            height: 60px;
+            background: #fff;
+            padding: 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .logo {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 0px rgba(255,105,180,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            margin-left: 25px;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        /* Power-up indicator */
+        .power-up {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1em;
+            box-shadow: 0 5px 15px rgba(255,215,0,0.2);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .power-up.active {
+            opacity: 1;
+        }
+
+        /* Particle effects */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        /* Score popup animation */
+        @keyframes scorePopup {
+            0% { transform: scale(0) translateY(0); opacity: 0; }
+            50% { transform: scale(1.2) translateY(-20px); opacity: 1; }
+            100% { transform: scale(1) translateY(-40px); opacity: 0; }
+        }
+
+        .score-popup {
+            position: absolute;
+            color: var(--primary);
+            font-size: 1.5em;
+            font-weight: bold;
+            pointer-events: none;
+            animation: scorePopup 1s ease-out forwards;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Game over screen */
+        .game-over {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .discount-box {
+            background: linear-gradient(45deg, var(--primary), var(--primary-light));
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .level {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #FFD700;
+            font-size: 1.2em;
+            box-shadow: 0 5px 15px rgba(255,215,0,0.2);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Mobile controls */
+        .mobile-controls {
+            position: fixed;
+            bottom: env(safe-area-inset-bottom, 20px);
+            left: 0;
+            right: 0;
+            display: none;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .jump-button {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 105, 180, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: white;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            transition: transform 0.1s ease-out;
+        }
+
+        .jump-button:active {
+            transform: scale(0.9);
+            background: rgba(255, 105, 180, 1);
+        }
+
+        /* Mobile UI Scaling */
+        @media (max-width: 768px) {
+            .game-container {
+                height: calc(100vh - 50px);
+                height: calc((var(--vh, 1vh) * 100) - 50px);
+                padding: 0;
+            }
+
+            canvas {
+                border-radius: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+            .nav-bar {
+                height: 50px;
+            }
+
+            .score, .level, .power-up {
+                transform: scale(1);
+                padding: 8px 15px;
+                font-size: 1.1em;
+            }
+
+            .score {
+                top: 10px;
+                left: 10px;
+            }
+
+            .level {
+                top: 10px;
+                right: 10px;
+            }
+
+            .power-up {
+                top: 60px;
+                right: 10px;
+            }
+        }
+
+        /* Mobile Controls Enhancement */
+        .mobile-controls {
+            position: fixed;
+            bottom: env(safe-area-inset-bottom, 20px);
+            left: 0;
+            right: 0;
+            display: none;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .jump-button {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 105, 180, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: white;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            transition: transform 0.1s ease-out;
+        }
+
+        .jump-button:active {
+            transform: scale(0.9);
+            background: rgba(255, 105, 180, 1);
+        }
+
+        /* Game menu mobile optimization */
+        @media (max-width: 768px) {
+            .menu {
+                width: 85%;
+                max-width: none;
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.98);
+            }
+
+            .menu h1 {
+                font-size: 2.2em;
+                margin-bottom: 15px;
+            }
+
+            .instruction-item {
+                font-size: 1.1em;
+                padding: 12px;
+                margin: 8px 0;
+            }
+
+            button {
+                padding: 15px 30px;
+                font-size: 1.2em;
+                margin: 10px 5px;
+            }
+
+            .mobile-controls {
+                display: flex;
+            }
+        }
+
+        /* Small screen optimizations */
+        @media (max-width: 380px) {
+            .jump-button {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2em;
+            }
+
+            .score, .level, .power-up {
+                font-size: 1em;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-heart"></i>
+                Lainika
+            </a>
+            <div class="nav-links">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="products.html"><i class="fas fa-shopping-bag"></i> Shop</a>
+                <a href="customer-stories.html"><i class="fas fa-book-open"></i> Stories</a>
+                <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="score" class="score">
+            <i class="fas fa-star"></i>
+            <span>Score: 0</span>
+        </div>
+        <div id="powerUp" class="power-up">
+            <i class="fas fa-bolt"></i>
+            <span>Double Jump!</span>
+        </div>
+        <div id="level" class="level">
+            <i class="fas fa-trophy"></i>
+            <span>Level: 1</span>
+        </div>
+        <div id="menu" class="menu">
+            <h1><i class="fas fa-gamepad"></i> Plushie Runner</h1>
+            <div class="instructions">
+                <div class="instruction-item">
+                    <i class="fas fa-running"></i>
+                    <span>Help your plushie run through the magical world!</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>Press SPACE or UP to jump (Double tap for double jump!)</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Collect hearts for bonus points!</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Avoid the obstacles!</span>
+                </div>
+            </div>
+            <button id="startButton">
+                <i class="fas fa-play"></i>
+                Start Adventure
+            </button>
+        </div>
+    </div>
+
+    <!-- Add mobile controls -->
+    <div class="mobile-controls">
+        <div class="jump-button" id="jumpButton">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </div>
+
+    <script>
+        // Game variables
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const menu = document.getElementById('menu');
+        const startButton = document.getElementById('startButton');
+        const scoreDisplay = document.getElementById('score').querySelector('span');
+        const powerUpDisplay = document.getElementById('powerUp');
+        const levelDisplay = document.getElementById('level').querySelector('span');
+        const jumpButton = document.getElementById('jumpButton');
+
+        // Game timing variables
+        let lastTime = 0;
+        const targetFPS = 60;
+        const frameTime = 1000 / targetFPS;
+
+        // Touch control variables
+        let touchStartTime = 0;
+        let lastJumpTime = 0;
+        const jumpCooldown = 100; // Minimum time between jumps in ms
+
+        // Set canvas size
+        canvas.width = 800;
+        canvas.height = 300;
+
+        // Game state
+        let gameRunning = false;
+        let score = 0;
+        let level = 1;
+        let speed = 5;
+        let groundY = canvas.height - 60;
+        let obstacleFrequency = 0.02;
+        let lastObstacleTime = 0;
+
+        // Player
+        const player = {
+            x: 50,
+            y: groundY,
+            width: 50,
+            height: 50,
+            jumping: false,
+            canDoubleJump: true,
+            jumpForce: -13,
+            gravity: 0.7,
+            velocityY: 0,
+            frame: 0,
+            frameCount: 8,
+            animationSpeed: 0.2,
+            invincible: false,
+            emoji: '🧸'  // Teddy bear emoji for player
+        };
+
+        // Game elements
+        let obstacles = [];
+        let hearts = [];
+        let particles = [];
+        const obstacleTypes = [
+            { 
+                type: 'small', 
+                width: 40, 
+                height: 60, 
+                emoji: '🌵',
+                hitboxWidth: 30,
+                hitboxHeight: 55
+            },
+            { 
+                type: 'medium', 
+                width: 45, 
+                height: 70, 
+                emoji: '🌲',
+                hitboxWidth: 35,
+                hitboxHeight: 65
+            },
+            { 
+                type: 'large', 
+                width: 50, 
+                height: 80, 
+                emoji: '🗻',
+                hitboxWidth: 40,
+                hitboxHeight: 75
+            }
+        ];
+
+        // Level configuration
+        const levelConfig = {
+            speedIncrease: 0.5,    // Speed increase per level
+            frequencyIncrease: 0.002, // Obstacle frequency increase per level
+            pointsToNextLevel: 500,  // Base points needed for next level
+            levelScaling: 1.2      // How much more points needed for each level
+        };
+
+        // Fix mobile viewport height
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        // Improve touch response
+        function handleJump(e) {
+            if (e) e.preventDefault();
+            const now = Date.now();
+
+            // Prevent jump spam
+            if (now - lastJumpTime < jumpCooldown) {
+                return;
+            }
+
+            if (!gameRunning) {
+                startGame();
+                return;
+            }
+
+            if (!player.jumping) {
+                player.jumping = true;
+                player.velocityY = player.jumpForce;
+                createParticles(player.x + player.width/2, player.y + player.height, 10, '✨');
+                lastJumpTime = now;
+            } else if (player.canDoubleJump && (now - touchStartTime < 300)) {
+                player.velocityY = player.jumpForce * 0.8;
+                player.canDoubleJump = false;
+                createParticles(player.x + player.width/2, player.y + player.height, 15, '⭐');
+                powerUpDisplay.classList.add('active');
+                setTimeout(() => powerUpDisplay.classList.remove('active'), 1000);
+                lastJumpTime = now;
+            }
+        }
+
+        // Event Listeners
+        jumpButton.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            touchStartTime = Date.now();
+            handleJump(e);
+        }, { passive: false });
+
+        document.addEventListener('keydown', (e) => {
+            if ((e.code === 'Space' || e.code === 'ArrowUp')) {
+                handleJump(e);
+            }
+        });
+
+        // Prevent default touch behaviors
+        document.addEventListener('touchmove', (e) => {
+            if (e.target === canvas) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Optimize canvas sizing
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+            
+            // Maintain aspect ratio
+            const aspectRatio = 8/3;
+            let width = containerWidth;
+            let height = containerHeight;
+            
+            if (width / height > aspectRatio) {
+                width = height * aspectRatio;
+            } else {
+                height = width / aspectRatio;
+            }
+            
+            canvas.width = width;
+            canvas.height = height;
+            
+            // Update game dimensions
+            groundY = canvas.height - (canvas.height * 0.2);
+            
+            // Update player position
+            if (player) {
+                player.y = groundY;
+            }
+
+            // Force a redraw
+            if (gameRunning) {
+                draw();
+            }
+        }
+
+        // Game loop with optimized timing
+        function gameLoop(currentTime) {
+            requestAnimationFrame(gameLoop);
+
+            if (!lastTime) {
+                lastTime = currentTime;
+                return;
+            }
+
+            const deltaTime = currentTime - lastTime;
+            
+            if (deltaTime < frameTime) {
+                return;
+            }
+
+            if (!gameRunning) {
+                lastTime = currentTime;
+                return;
+            }
+
+            // Update game state
+            updatePlayer();
+            updateObstacles();
+            updateHearts();
+            updateParticles();
+            updateLevel();
+
+            if (gameRunning) {
+                score++;
+                scoreDisplay.textContent = `Score: ${score}`;
+            }
+
+            draw();
+            lastTime = currentTime;
+        }
+
+        // Initialize game
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            setVH();
+            requestAnimationFrame(gameLoop);
+        });
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            setVH();
+        });
+
+        window.addEventListener('orientationchange', () => {
+            setTimeout(() => {
+                resizeCanvas();
+                setVH();
+            }, 100);
+        });
+
+        // Game functions
+        function startGame() {
+            gameRunning = true;
+            score = 0;
+            level = 1;
+            speed = 5;
+            obstacles = [];
+            hearts = [];
+            particles = [];
+            player.y = groundY;
+            player.jumping = false;
+            player.canDoubleJump = true;
+            player.velocityY = 0;
+            menu.classList.add('hidden');
+            scoreDisplay.textContent = `Score: ${score}`;
+            levelDisplay.textContent = `Level: ${level}`;
+            obstacleFrequency = 0.02;
+            lastObstacleTime = 0;
+            requestAnimationFrame(gameLoop);
+        }
+
+        function createParticles(x, y, count, emoji) {
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x,
+                    y,
+                    vx: (Math.random() - 0.5) * 5,
+                    vy: (Math.random() - 0.5) * 5,
+                    size: 20,
+                    emoji: emoji,
+                    life: 1
+                });
+            }
+        }
+
+        function updateParticles() {
+            particles = particles.filter(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.1;
+                p.life -= 0.02;
+                return p.life > 0;
+            });
+        }
+
+        function drawParticles() {
+            particles.forEach(p => {
+                ctx.globalAlpha = p.life;
+                ctx.font = `${p.size}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(p.emoji, p.x, p.y);
+                ctx.globalAlpha = 1;
+            });
+        }
+
+        function updateLevel() {
+            const newLevel = Math.floor(score / levelConfig.pointsToNextLevel) + 1;
+            if (newLevel !== level) {
+                level = newLevel;
+                levelDisplay.textContent = `Level: ${level}`;
+                
+                // Update game difficulty
+                speed = 5 + (level - 1) * levelConfig.speedIncrease;
+                obstacleFrequency = 0.02 + (level - 1) * levelConfig.frequencyIncrease;
+                
+                // Show level up message
+                showLevelUpMessage();
+            }
+        }
+
+        function showLevelUpMessage() {
+            const message = document.createElement('div');
+            message.className = 'level-up-message animate__animated animate__bounceIn';
+            message.innerHTML = `
+                <div style="font-size: 2em; color: #FFD700;">Level ${level}!</div>
+                <div style="font-size: 1.2em; color: #fff;">Speed: ${speed.toFixed(1)}x</div>
+            `;
+            message.style.position = 'absolute';
+            message.style.left = '50%';
+            message.style.top = '50%';
+            message.style.transform = 'translate(-50%, -50%)';
+            message.style.background = 'rgba(0, 0, 0, 0.8)';
+            message.style.padding = '20px 40px';
+            message.style.borderRadius = '15px';
+            message.style.textAlign = 'center';
+            document.querySelector('.game-container').appendChild(message);
+            
+            setTimeout(() => message.remove(), 2000);
+        }
+
+        function calculateDiscount() {
+            if (level <= 5) return 0;
+            return Math.min(Math.max(0, level - 5), 15); // Cap at 15% discount (level 20)
+        }
+
+        function endGame() {
+            gameRunning = false;
+            menu.classList.remove('hidden');
+            
+            const discount = calculateDiscount();
+            menu.innerHTML = `
+                <div class="game-over animate__animated animate__fadeIn">
+                    <h1><i class="fas fa-trophy"></i> Game Over!</h1>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value">${score}</div>
+                            <div class="stat-label">Score</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${level}</div>
+                            <div class="stat-label">Level</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${Math.floor(speed)}</div>
+                            <div class="stat-label">Speed</div>
+                        </div>
+                    </div>
+
+                    <div class="discount-box animate__animated animate__pulse animate__infinite">
+                        <i class="fas fa-gift fa-2x"></i>
+                        ${discount > 0 ? `
+                            <p style="font-size: 1.2em;">You earned a ${discount}% discount!</p>
+                            <p style="font-size: 1.4em; margin-top: 10px;">Code: PLUSHIE${discount}</p>
+                        ` : `
+                            <p style="font-size: 1.2em;">Reach level 6+ for discounts!</p>
+                            <p style="font-size: 1em; margin-top: 10px;">Current Level: ${level}</p>
+                        `}
+                    </div>
+
+                    <button id="startButton">
+                        <i class="fas fa-redo"></i>
+                        Play Again
+                    </button>
+                    <button onclick="window.location.href='products.html'">
+                        <i class="fas fa-shopping-cart"></i>
+                        Shop Now
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('startButton').addEventListener('click', startGame);
+        }
+
+        function updatePlayer() {
+            if (player.jumping) {
+                player.velocityY += player.gravity;
+                player.y += player.velocityY;
+
+                if (player.y >= groundY) {
+                    player.y = groundY;
+                    player.jumping = false;
+                    player.canDoubleJump = true;
+                    player.velocityY = 0;
+                    createParticles(player.x + player.width/2, player.y + player.height, 5, '🌱');
+                }
+            }
+
+            // Update animation frame
+            player.frame += player.animationSpeed;
+            if (player.frame >= player.frameCount) {
+                player.frame = 0;
+            }
+        }
+
+        function createObstacle() {
+            const type = obstacleTypes[Math.floor(Math.random() * obstacleTypes.length)];
+            
+            // Add pattern variations based on level
+            let y = groundY - type.height + 10;
+            if (level > 5) {
+                // Add floating obstacles at higher levels
+                if (Math.random() < 0.3) {
+                    y -= Math.random() * 50;
+                }
+            }
+            
+            return {
+                x: canvas.width,
+                y: y,
+                width: type.width,
+                height: type.height * (1 + (level - 1) * 0.05), // Slightly increase obstacle size with level
+                hitboxWidth: type.hitboxWidth,
+                hitboxHeight: type.hitboxHeight * (1 + (level - 1) * 0.05),
+                type: type.type,
+                emoji: type.emoji
+            };
+        }
+
+        function createHeart() {
+            return {
+                x: canvas.width,
+                y: Math.min(groundY - 120, Math.max(50, groundY - 100 - Math.random() * 80)),
+                width: 30,
+                height: 30,
+                floatOffset: 0,
+                floatSpeed: 0.05 + Math.random() * 0.03
+            };
+        }
+
+        function updateObstacles() {
+            const currentTime = Date.now();
+            const timeSinceLastObstacle = currentTime - lastObstacleTime;
+            const minTimeBetweenObstacles = 1000 / (1 + (level - 1) * 0.2); // Decrease minimum time between obstacles as level increases
+            
+            // Ensure minimum gap between obstacles and add randomness
+            if (timeSinceLastObstacle > minTimeBetweenObstacles && Math.random() < obstacleFrequency) {
+                obstacles.push(createObstacle());
+                lastObstacleTime = currentTime;
+            }
+
+            obstacles = obstacles.filter(obstacle => {
+                obstacle.x -= speed * (1 + (level - 1) * 0.1); // Increase speed with level
+                
+                if (!player.invincible && checkCollision(player, obstacle)) {
+                    createParticles(player.x + player.width/2, player.y + player.height/2, 20, '💥');
+                    endGame();
+                    return false;
+                }
+
+                return obstacle.x > -obstacle.width;
+            });
+        }
+
+        function updateHearts() {
+            if (Math.random() < 0.01) {
+                hearts.push(createHeart());
+            }
+
+            hearts = hearts.filter(heart => {
+                heart.x -= speed;
+
+                if (checkCollision(player, heart)) {
+                    score += 50;
+                    createParticles(heart.x + heart.width/2, heart.y + heart.height/2, 15, '❤️');
+                    showScorePopup(heart.x, heart.y);
+                    scoreDisplay.textContent = `Score: ${score}`;
+                    return false;
+                }
+
+                return heart.x > -heart.width;
+            });
+        }
+
+        function showScorePopup(x, y) {
+            const popup = document.createElement('div');
+            popup.className = 'score-popup animate__animated animate__fadeOutUp';
+            popup.innerHTML = `<i class="fas fa-heart"></i> +50`;
+            popup.style.left = `${x}px`;
+            popup.style.top = `${y}px`;
+            document.body.appendChild(popup);
+            
+            setTimeout(() => popup.remove(), 1000);
+        }
+
+        function checkCollision(a, b) {
+            // Use hitbox dimensions for obstacles
+            const bWidth = b.hitboxWidth || b.width;
+            const bHeight = b.hitboxHeight || b.height;
+            
+            // Add small margin for better gameplay feel
+            const margin = 5;
+            
+            // Check if player is trying to go under obstacles
+            const playerBottom = a.y + a.height;
+            const obstacleBottom = b.y + bHeight;
+            
+            // If player is too close to the ground while passing obstacles, count as collision
+            const minHeightClearance = 20;
+            if (a.x + margin < b.x + bWidth && 
+                a.x + a.width - margin > b.x && 
+                playerBottom > obstacleBottom - minHeightClearance) {
+                return true;
+            }
+            
+            return a.x + margin < b.x + bWidth &&
+                   a.x + a.width - margin > b.x &&
+                   a.y + margin < b.y + bHeight &&
+                   a.y + a.height - margin > b.y;
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw sky gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, '#87CEEB');
+            gradient.addColorStop(0.5, '#B0E2FF');
+            gradient.addColorStop(1, '#E0F7FA');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw clouds in background
+            ctx.font = '40px Arial';
+            ctx.fillText('☁️', (Date.now() * 0.05) % canvas.width, 50);
+            ctx.fillText('☁️', ((Date.now() * 0.03) + 300) % canvas.width, 80);
+            ctx.fillText('☁️', ((Date.now() * 0.04) + 600) % canvas.width, 40);
+
+            // Draw ground with gradient
+            const groundGradient = ctx.createLinearGradient(0, groundY, 0, canvas.height);
+            groundGradient.addColorStop(0, '#90EE90');
+            groundGradient.addColorStop(1, '#228B22');
+            ctx.fillStyle = groundGradient;
+            ctx.fillRect(0, groundY + 10, canvas.width, canvas.height - groundY - 10);
+
+            // Draw grass details
+            ctx.fillStyle = '#228B22';
+            for (let i = 0; i < canvas.width; i += 15) {
+                const grassHeight = 5 + Math.sin((i + Date.now() * 0.1) * 0.1) * 3;
+                ctx.fillRect(i, groundY + 10, 3, -grassHeight);
+            }
+
+            // Draw obstacles
+            obstacles.forEach(obstacle => {
+                // Draw hitbox for debugging
+                // ctx.strokeStyle = 'red';
+                // ctx.strokeRect(obstacle.x, obstacle.y, obstacle.hitboxWidth, obstacle.hitboxHeight);
+                
+                ctx.font = `${obstacle.height}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'bottom';
+                ctx.fillText(obstacle.emoji, obstacle.x + obstacle.width/2, obstacle.y + obstacle.height);
+            });
+
+            // Draw hearts
+            hearts.forEach(heart => {
+                ctx.font = '30px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                const y = heart.y + Math.sin(Date.now() * heart.floatSpeed) * 10;
+                ctx.fillText('❤️', heart.x + heart.width/2, y + heart.height/2);
+            });
+
+            // Draw player with shadow
+            ctx.save();
+            const bounceOffset = Math.sin(player.frame) * 3;
+            const rotation = player.jumping ? Math.sin(player.velocityY * 0.1) * 0.2 : 0;
+            
+            // Draw shadow
+            ctx.globalAlpha = 0.2;
+            ctx.font = `${player.height}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('⚫', player.x + player.width/2, groundY + 8);
+            
+            // Draw player
+            ctx.globalAlpha = 1;
+            ctx.translate(player.x + player.width/2, player.y + player.height/2 + bounceOffset);
+            ctx.rotate(rotation);
+            ctx.font = `${player.height}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(player.emoji, 0, 0);
+            ctx.restore();
+
+            drawParticles();
+        }
+    </script>
+</body>
+</html> 

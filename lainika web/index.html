@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lainika - Cuteness You Can Cuddle</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Updated Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- SwiperJS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver"></script>
+  </head>
+  <body>
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <div class="container">
+        <div class="nav-container">
+          <a href="index.html" class="logo">Lainika</a>
+          <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="products.html">Products</a>
+            <a href="javascript:void(0)" onclick="openQuizModal()">Find Your Plushie</a>
+            <a href="customer-stories.html">Stories</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Falling Animation Container -->
+    <div class="falling-container" aria-hidden="true">
+      <!-- Elements will be added dynamically via JavaScript -->
+    </div>
+
+    <style>
+      .falling-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .falling-element {
+        position: fixed;
+        pointer-events: none;
+        animation: fall linear infinite;
+        opacity: 0.6;
+        z-index: 1;
+      }
+
+      .falling-element.petal {
+        width: 15px;
+        height: 15px;
+        background: linear-gradient(45deg, #ffb7c5, #ff8fab);
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      }
+
+      .falling-element.plushie {
+        font-size: 24px;
+        color: #ff8fab;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        animation: fallAndSway linear infinite;
+      }
+
+      .falling-element.heart {
+        font-size: 20px;
+        color: #ff6b95;
+        animation: fallAndPulse linear infinite;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-20px) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes fallAndSway {
+        0% {
+          transform: translateY(-20px) rotate(0deg) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        50% {
+          transform: translateY(50vh) rotate(180deg) translateX(50px);
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg) translateX(0);
+          opacity: 0;
+        }
+      }
+
+      @keyframes fallAndPulse {
+        0% {
+          transform: translateY(-20px) scale(1);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        50% {
+          transform: translateY(50vh) scale(1.2);
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(100vh) scale(1);
+          opacity: 0;
+        }
+      }
+    </style>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="floating-elements">
+          <div class="float float-1"><i class="fas fa-heart"></i></div>
+          <div class="float float-2"><i class="fas fa-star"></i></div>
+          <div class="float float-3"><i class="fas fa-sparkles"></i></div>
+        </div>
+        <div class="hero-content">
+          <h1>Cuteness You Can Cuddle</h1>
+          <p>
+            Welcome to Lainika, where every plushie is handpicked to bring
+            warmth and joy to your home. Discover your next cuddly companion
+            today!
+          </p>
+          <a href="products.html" class="cta-button">
+            <i class="fas fa-shopping-bag"></i> Shop Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Adoption Certificate -->
+    <section class="adoption-certificate">
+      <div class="container">
+        <div class="certificate-content">
+          <div class="certificate-preview">
+            <div class="certificate-frame">
+              <div class="certificate-inner">
+                <div class="certificate-header">
+                  <i class="fas fa-paw certificate-icon"></i>
+                  <h3>Certificate of Adoption</h3>
+                </div>
+                <div class="certificate-sample">
+                  <p class="cert-line">This certifies that</p>
+                  <p class="cert-name">[Your Name]</p>
+                  <p class="cert-line">has officially adopted</p>
+                  <p class="cert-plushie">[Plushie Name]</p>
+                  <p class="cert-date">on [Date]</p>
+                  <div class="cert-seal">
+                    <i class="fas fa-certificate"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="certificate-sparkles">
+              <i class="fas fa-sparkles sparkle-1"></i>
+              <i class="fas fa-sparkles sparkle-2"></i>
+              <i class="fas fa-sparkles sparkle-3"></i>
+            </div>
+          </div>
+          <div class="certificate-info">
+            <h2 class="neon-text">Every Plushie Comes With Their Own Story</h2>
+            <div class="certificate-features">
+              <div class="feature">
+                <i class="fas fa-heart"></i>
+                <h4>Personalized Adoption Certificate</h4>
+                <p>Each plushie comes with a beautiful, personalized certificate marking the special day they became part of your family.</p>
+              </div>
+              <div class="feature">
+                <i class="fas fa-star"></i>
+                <h4>Unique Identity</h4>
+                <p>Your plushie's certificate includes their unique adoption date and special characteristics, making them truly one of a kind.</p>
+              </div>
+              <div class="feature">
+                <i class="fas fa-gift"></i>
+                <h4>Perfect for Gifting</h4>
+                <p>Make your gift extra special with a personalized certificate - perfect for birthdays, anniversaries, or any special occasion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plushie Match Teaser -->
+    <section class="plushie-match">
+      <div class="container">
+        <div class="match-card">
+          <div class="sparkle-animation"></div>
+          <h2 class="neon-text">
+            <i class="fas fa-magic"></i> Find Your Perfect Plushie
+          </h2>
+          <p>Take our magical quiz to discover your ideal cuddly companion!</p>
+          <button class="match-button" onclick="openQuizModal()">
+            Start the Magic <i class="fas fa-wand-sparkles"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Modal -->
+    <div class="quiz-modal" id="quizModal">
+      <div class="quiz-content">
+        <button class="close-quiz" onclick="closeQuizModal()">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <!-- Quiz Start Screen -->
+        <div class="quiz-screen" id="quizStart">
+          <h2 class="neon-text">
+            <i class="fas fa-heart"></i> Plushie Match Quiz
+          </h2>
+          <p>
+            Let's find your perfect cuddly companion! Answer a few magical
+            questions to discover which plushie matches your personality.
+          </p>
+          <button class="match-button" onclick="startQuiz()">
+            Begin Journey <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Quiz Questions -->
+        <div
+          class="quiz-screen quiz-questions"
+          id="quizQuestions"
+          style="display: none"
+        >
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+          <div class="question-container">
+            <!-- Questions will be inserted here by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Quiz Result -->
+        <div class="quiz-screen" id="quizResult" style="display: none">
+          <div class="result-container">
+            <img src="" alt="Your Perfect Plushie" class="result-image" />
+            <h2 class="neon-text">Your Perfect Match!</h2>
+            <p class="result-description"></p>
+            <div class="result-traits"></div>
+            <button
+              class="match-button"
+              onclick="window.location.href='products.html'"
+            >
+              Shop Now <i class="fas fa-shopping-cart"></i>
+            </button>
+            <button class="retry-button" onclick="resetQuiz()">
+              Try Again <i class="fas fa-redo"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Lainika Story -->
+    <section class="about-story" id="story">
+      <div class="container">
+        <h2 class="neon-text">Our Story</h2>
+        <div class="story-intro">
+          <div class="founder-message">
+            <p class="quote">
+              "I noticed a gap in Kenya's plushie market - either expensive new
+              ones or worn-out thrifted options. That's when I decided to make
+              cute, quality plushies accessible to everyone. Because everyone deserves
+              a cuddly companion to share their journey with."
+            </p>
+            <p class="founder">- Malik, Founder of Lainika</p>
+          </div>
+        </div>
+        <div class="story-container">
+          <div class="story-step">
+            <i class="fas fa-lightbulb story-icon"></i>
+            <h3>The Inspiration</h3>
+            <p>
+              At just 20 years old, I saw how plushies brought joy to people's lives - 
+              couples celebrating their love, parents nurturing their children's imagination,
+              and individuals finding comfort in their own space. But quality plushies were
+              either too expensive or hard to find. That's when Lainika was born.
+            </p>
+          </div>
+          <div class="story-step">
+            <i class="fas fa-rocket story-icon"></i>
+            <h3>Our Mission</h3>
+            <p>
+              We believe that every moment of joy deserves to be celebrated - whether it's
+              your first date, anniversary, birthday, or just because. Our plushies are more
+              than just toys; they're companions for life's precious moments, bringing
+              warmth to your relationships and spaces.
+            </p>
+          </div>
+          <div class="story-step">
+            <i class="fas fa-heart story-icon"></i>
+            <h3>Our Promise</h3>
+            <p>
+              Every Lainika plushie is carefully chosen with love and attention to detail.
+              From couples expressing their affection, to parents sharing moments with their
+              children, to friends spreading joy - we're here to make every cuddle count.
+              Because at Lainika, we don't just sell plushies; we deliver happiness you can hold.
+            </p>
+          </div>
+        </div>
+        <div class="story-highlights">
+          <div class="highlight-box">
+            <i class="fas fa-gift highlight-icon"></i>
+            <h4>Perfect for Every Occasion</h4>
+            <p>
+              First dates, anniversaries, birthdays, or 'just because' moments - 
+              our plushies make every celebration more memorable.
+            </p>
+          </div>
+          <div class="highlight-box">
+            <i class="fas fa-users highlight-icon"></i>
+            <h4>For Everyone</h4>
+            <p>
+              Couples sharing love, parents nurturing children, friends showing they care,
+              or treating yourself - there's a perfect plushie waiting for you.
+            </p>
+          </div>
+          <div class="highlight-box">
+            <i class="fas fa-hand-holding-heart highlight-icon"></i>
+            <h4>Quality You Can Trust</h4>
+            <p>
+              Each plushie is selected for its softness, durability, and cuddle-factor.
+              Because your moments of joy deserve the very best.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <div class="container">
+        <h2 class="neon-text">
+          <i class="fas fa-quote-left"></i> Happy Cuddles
+        </h2>
+        <div class="swiper testimonials-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-bubble">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p>
+                  "My Lainika plushie is the softest, most adorable friend I
+                  could ask for! The quality is amazing!"
+                </p>
+                <cite>- Sarah K.</cite>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-bubble">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p>
+                  "The attention to detail and the customer service are
+                  outstanding. My daughter absolutely loves her new plushie!"
+                </p>
+                <cite>- Maria R.</cite>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-bubble">
+                <i class="fas fa-quote-right quote-icon"></i>
+                <p>
+                  "These plushies are pure magic! So well-made and impossibly
+                  cute. Can't wait to collect more!"
+                </p>
+                <cite>- James T.</cite>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+      <a href="index.html" class="nav-item active">
+        <i class="fas fa-home"></i>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="products.html" class="nav-item">
+        <i class="fas fa-gift"></i>
+        <span class="nav-label">Products</span>
+      </a>
+      <a href="javascript:void(0)" onclick="openQuizModal()" class="nav-item">
+        <i class="fas fa-paw"></i>
+        <span class="nav-label">Match</span>
+      </a>
+      <a href="customer-stories.html" class="nav-item">
+        <i class="fas fa-book-open"></i>
+        <span class="nav-label">Stories</span>
+      </a>
+      <a href="contact.html" class="nav-item">
+        <i class="fas fa-envelope"></i>
+        <span class="nav-label">Contact</span>
+      </a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize quiz modal functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get quiz modal elements
+        const quizTrigger = document.querySelector('.quiz-trigger');
+        const quizModal = document.getElementById('quizModal');
+        const closeBtn = document.querySelector('.close-quiz');
+        
+        // Add event listeners for quiz modal
+        if (quizTrigger) {
+          quizTrigger.addEventListener('click', openQuizModal);
+        }
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeQuizModal);
+        }
+        
+        // Close modal if clicking outside
+        window.addEventListener('click', (e) => {
+          if (e.target === quizModal) {
+            closeQuizModal();
+          }
+        });
+        
+        // Initialize AOS
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true
+        });
+
+        // Initialize falling animations
+        initFallingElements();
+      });
+
+      // Falling Elements Animation
+      function initFallingElements() {
+        const container = document.querySelector('.falling-container');
+        const plushieIcons = ['🧸', '🐻', '🐰', '🐱', '🐼'];
+        
+        // Create initial elements
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => createFallingElement(container), i * 2000);
+        }
+
+        // Continue creating elements
+        setInterval(() => {
+            if (document.visibilityState === 'visible') {
+                createFallingElement(container);
+            }
+        }, 3000);
+      }
+
+      function createFallingElement(container) {
+        const element = document.createElement('div');
+        const type = Math.random() < 0.4 ? 'petal' : 
+                    Math.random() < 0.7 ? 'plushie' : 'heart';
+        
+        element.className = `falling-element ${type}`;
+        
+        // Set random position and animation duration
+        const startX = Math.random() * window.innerWidth;
+        const duration = 7000 + Math.random() * 5000;
+        
+        element.style.left = `${startX}px`;
+        element.style.animationDuration = `${duration}ms`;
+        
+        // Add content based on type
+        if (type === 'plushie') {
+            const plushieIcons = ['🧸', '🐻', '🐰', '🐱', '🐼'];
+            element.textContent = plushieIcons[Math.floor(Math.random() * plushieIcons.length)];
+        } else if (type === 'heart') {
+            element.innerHTML = '<i class="fas fa-heart"></i>';
+        }
+        
+        container.appendChild(element);
+        
+        // Remove element after animation
+        setTimeout(() => {
+            element.remove();
+        }, duration);
+      }
+    </script>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+      <a href="https://wa.me/254757608176" class="floating-button whatsapp-fab bounce-animation" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="fab-tooltip">Chat with Us</span>
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="social-links">
+          <a href="https://wa.me/254757608176" class="social-icon" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.instagram.com/lainika.inc/" class="social-icon" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/lainika.inc" class="social-icon" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+        <p class="footer-message">
+          Thanks for visiting Lainika <i class="fas fa-heart"></i> See you soon!
+        </p>
+      </div>
+    </footer>
+
+    <!-- SwiperJS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="products.js"></script>
+    <script src="quiz.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Our Plushies - Lainika</title>
+    <!-- Preload critical assets -->
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="preload" href="products.css" as="style" />
+    <link rel="preload" href="mobile.css" as="style" />
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="products.css" />
+    <link rel="stylesheet" href="mobile.css" />
+    <!-- Updated Font Awesome with reduced icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      media="print" onload="this.media='all'"
+    />
+    <!-- Google Fonts with display swap -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+      media="print" onload="this.media='all'"
+    />
+    <!-- SwiperJS - Load only on desktop -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+      media="(min-width: 769px)"
+    />
+    <!-- Add meta description for SEO -->
+    <meta name="description" content="Discover our collection of handcrafted plushies and kawaii bags at Lainika. Each item is made with love and care." />
+    <!-- Add theme color for mobile browsers -->
+    <meta name="theme-color" content="#ffffff" />
+  </head>
+  <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+      <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <p>Loading your magical collection...</p>
+      </div>
+    </div>
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <div class="container">
+        <div class="nav-container">
+          <a href="index.html" class="logo">Lainika</a>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html" class="active">Products</a>
+            <a href="javascript:void(0)" onclick="openQuizModal()">Find Your Plushie</a>
+            <a href="customer-stories.html">Stories</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="mega-hero">
+      <div class="mega-hero-content">
+        <div class="mega-hero-text">
+          <h1>Browse Our Magical Collection</h1>
+          <p>
+            Discover a world of cuddly companions, each handcrafted with love
+            and ready to bring joy to your home.
+          </p>
+          <div class="mega-hero-stats">
+            <div class="stat">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Unique Plushies</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Handmade</span>
+            </div>
+          </div>
+        </div>
+        <div class="mega-hero-showcase desktop-only">
+          <div class="rotating-plushies">
+            <div class="plushie-item active" data-aos="fade-up" data-aos-delay="100">
+              <img
+                src="images/lainika plush.png"
+                alt="Lainika Bunny"
+              />
+              <div class="plushie-info">
+                <h3>Lainika Bunny</h3>
+                <p>Our signature bunny, crafted with extra soft materials!</p>
+              </div>
+            </div>
+            <div class="plushie-item" data-aos="fade-up" data-aos-delay="200">
+              <img
+                src="images/hello kitty dress.png"
+                alt="Hello Kitty Dress Plushie"
+              />
+              <div class="plushie-info">
+                <h3>Hello Kitty Dress</h3>
+                <p>A beautiful Hello Kitty in a lovely dress!</p>
+              </div>
+            </div>
+            <div class="plushie-item" data-aos="fade-up" data-aos-delay="300">
+              <img
+                src="images/stitch ocean.png"
+                alt="Stitch with Ukulele"
+              />
+              <div class="plushie-info">
+                <h3>Stitch with Ukulele</h3>
+                <p>Bringing tropical vibes to your home!</p>
+              </div>
+            </div>
+            <div class="plushie-item" data-aos="fade-up" data-aos-delay="400">
+              <img
+                src="images/cute panda.png"
+                alt="Kawaii Panda"
+              />
+              <div class="plushie-info">
+                <h3>Kawaii Panda</h3>
+                <p>An adorable panda plushie for endless cuddles!</p>
+              </div>
+            </div>
+          </div>
+          <div class="showcase-controls">
+            <button class="control-dot active" data-index="0"></button>
+            <button class="control-dot" data-index="1"></button>
+            <button class="control-dot" data-index="2"></button>
+            <button class="control-dot" data-index="3"></button>
+          </div>
+        </div>
+      </div>
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+    </section>
+
+    <!-- Products Hero -->
+    <section class="products-hero">
+      <div class="container">
+        <h1 class="neon-text">Our Magical Collection</h1>
+        <p class="subtitle">Find your perfect cuddly companion</p>
+
+        <!-- Enhanced Category Filter -->
+        <div class="filter-sections">
+          <div class="category-filter">
+            <div class="filter-bubble active" data-category="all">
+              <div class="bubble-content">
+                <i class="fas fa-star"></i>
+                <span>All</span>
+                <small class="count">9</small>
+              </div>
+            </div>
+            <div class="filter-bubble" data-category="plushies">
+              <div class="bubble-content">
+                <i class="fas fa-paw"></i>
+                <span>Plushies</span>
+                <small class="count">5</small>
+              </div>
+            </div>
+            <div class="filter-bubble" data-category="bags">
+              <div class="bubble-content">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Bags</span>
+                <small class="count">4</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mood Filter -->
+          <div class="mood-filter">
+            <h3 class="filter-title">Choose by Mood <i class="fas fa-heart"></i></h3>
+            <div class="mood-buttons">
+              <button class="mood-btn active" data-mood="all">
+                <i class="fas fa-star"></i>
+                <span>All Moods</span>
+              </button>
+              <button class="mood-btn" data-mood="kawaii">
+                <i class="fas fa-heart"></i>
+                <span>Kawaii</span>
+              </button>
+              <button class="mood-btn" data-mood="cute">
+                <i class="fas fa-smile"></i>
+                <span>Cute</span>
+              </button>
+              <button class="mood-btn" data-mood="stylish">
+                <i class="fas fa-gem"></i>
+                <span>Stylish</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Size Guide Popup -->
+    <div class="size-guide-popup" id="sizeGuidePopup">
+      <div class="size-guide-content">
+        <button class="close-size-guide">×</button>
+        <h3 class="size-guide-title">Size Guide</h3>
+        
+        <!-- Lainika Bunny Size Guide -->
+        <div class="size-guide-sections" data-product="Lainika Bunny">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">30 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">25 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">300g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kawaii Panda Size Guide -->
+        <div class="size-guide-sections" data-product="Kawaii Panda" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">28 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">22 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">280g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hello Kitty Dress Plushie Size Guide -->
+        <div class="size-guide-sections" data-product="Hello Kitty Dress Plushie" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">32 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">24 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">320g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hugging Cat Plushie Size Guide -->
+        <div class="size-guide-sections" data-product="Hugging Cat Plushie" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">25 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">20 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">250g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fluffy Elephant Plushie Size Guide -->
+        <div class="size-guide-sections" data-product="Fluffy Elephant Plushie" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">30 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">25 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">300g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bunny Bouquet Size Guide -->
+        <div class="size-guide-sections" data-product="Bunny Bouquet" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">35 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">30 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">400g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cute Stitch Bear Size Guide -->
+        <div class="size-guide-sections" data-product="Cute Stitch Bear" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">28 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">22 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">280g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Normal Hello Kitty Size Guide -->
+        <div class="size-guide-sections" data-product="Normal Hello Kitty" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">26 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">20 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">260g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fluffy Kitten Size Guide -->
+        <div class="size-guide-sections" data-product="Fluffy Kitten" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">28 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">22 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">280g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stitch with Ukulele Size Guide -->
+        <div class="size-guide-sections" data-product="Stitch with Ukulele" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">32 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">25 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">320g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Normal Stitch Size Guide -->
+        <div class="size-guide-sections" data-product="Normal Stitch" style="display: none;">
+          <div class="size-section">
+            <h4><i class="fas fa-ruler"></i> Actual Measurements</h4>
+            <div class="measurements">
+              <div class="measurement-item">
+                <span class="label">Height</span>
+                <span class="value">30 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Width</span>
+                <span class="value">24 cm</span>
+              </div>
+              <div class="measurement-item">
+                <span class="label">Weight</span>
+                <span class="value">300g</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Common sections for all plushies -->
+        <div class="size-section">
+          <h4><i class="fas fa-heart"></i> Perfect For</h4>
+          <div class="perfect-for-grid">
+            <div class="perfect-item">
+              <i class="fas fa-bed"></i>
+              <span>Bedtime Cuddles</span>
+            </div>
+            <div class="perfect-item">
+              <i class="fas fa-couch"></i>
+              <span>Sofa Companion</span>
+            </div>
+            <div class="perfect-item">
+              <i class="fas fa-car"></i>
+              <span>Travel Buddy</span>
+            </div>
+            <div class="perfect-item">
+              <i class="fas fa-gift"></i>
+              <span>Impressive Gift</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="size-section">
+          <h4><i class="fas fa-heart"></i> Huggability Features</h4>
+          <ul class="care-instructions">
+            <li><i class="fas fa-cloud"></i> Extra Soft Material</li>
+            <li><i class="fas fa-compress-arrows-alt"></i> Perfect Squeeze</li>
+            <li><i class="fas fa-feather"></i> Light & Cuddly</li>
+          </ul>
+        </div>
+
+        <div class="size-section">
+          <h4><i class="fas fa-washing-machine"></i> Care Instructions</h4>
+          <ul class="care-instructions">
+            <li><i class="fas fa-tint"></i> Hand wash with care</li>
+            <li><i class="fas fa-sun"></i> Air dry in shade</li>
+            <li><i class="fas fa-brush"></i> Gentle brush when dry</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <section class="products-grid">
+      <div class="container">
+        <div class="products-wrapper">
+          <!-- Lainika Bunny -->
+          <div class="product-card" data-category="plushies" data-moods="kawaii,cute">
+            <div class="product-image">
+              <img src="images/lainika plush.png" alt="Lainika Bunny" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Lainika Bunny')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Lainika Bunny')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Lainika Bunny')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Lainika Bunny')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Lainika Bunny</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Kawaii</span>
+                <span class="trait"><i class="fas fa-smile"></i> Cute</span>
+                <span class="trait"><i class="fas fa-cloud"></i> Fluffy</span>
+              </div>
+              <p class="product-story">Our signature bunny, crafted with extra soft materials and endless love!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,500</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Lainika Bunny')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hello Kitty Bag -->
+          <div class="product-card" data-category="bags" data-moods="kawaii,stylish">
+            <div class="product-image">
+              <img src="images/hello kitty bag.png" alt="Hello Kitty Bag" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Hello Kitty Bag')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Hello Kitty Bag')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Hello Kitty Bag')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Hello Kitty Bag')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Hello Kitty Bag</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Kawaii</span>
+                <span class="trait"><i class="fas fa-gem"></i> Stylish</span>
+                <span class="trait"><i class="fas fa-star"></i> Trendy</span>
+              </div>
+              <p class="product-story">A fluffy and fashionable bag that's perfect for any occasion!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 2,800</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Hello Kitty Bag')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cinnamon Bag -->
+          <div class="product-card" data-category="bags" data-moods="cute,stylish">
+            <div class="product-image">
+              <img src="images/cinammon bag.png" alt="Cinnamon Bag" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Cinnamon Bag')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Cinnamon Bag')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Cinnamon Bag')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Cinnamon Bag')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Cinnamon Bag</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-smile"></i> Cute</span>
+                <span class="trait"><i class="fas fa-gem"></i> Stylish</span>
+                <span class="trait"><i class="fas fa-star"></i> Unique</span>
+              </div>
+              <p class="product-story">A sweet and stylish bag that adds charm to any outfit!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,800</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Cinnamon Bag')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kuromi Side Bag -->
+          <div class="product-card" data-category="bags" data-moods="kawaii,stylish">
+            <div class="product-image">
+              <img src="images/kuromi side.png" alt="Kuromi Side Bag" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Kuromi Side Bag')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Kuromi Side Bag')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Kuromi Side Bag')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Kuromi Side Bag')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Kuromi Side Bag</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Kawaii</span>
+                <span class="trait"><i class="fas fa-gem"></i> Stylish</span>
+                <span class="trait"><i class="fas fa-star"></i> Trendy</span>
+              </div>
+              <p class="product-story">A trendy side bag that combines style with kawaii charm!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 2,299</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Kuromi Side Bag')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kawaii Panda -->
+          <div class="product-card" data-category="plushies" data-moods="kawaii,cute">
+            <div class="product-image">
+              <img src="images/cute panda.png" alt="Kawaii Panda" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Kawaii Panda')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Kawaii Panda')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Kawaii Panda')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Kawaii Panda')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Kawaii Panda</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Kawaii</span>
+                <span class="trait"><i class="fas fa-smile"></i> Cute</span>
+                <span class="trait"><i class="fas fa-cloud"></i> Fluffy</span>
+              </div>
+              <p class="product-story">An adorable panda plushie that brings joy and comfort!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,600</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Kawaii Panda')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Kuromi Bag -->
+          <div class="product-card" data-category="bags" data-moods="kawaii,stylish">
+            <div class="product-image">
+              <img src="images/kuromi bag big.png" alt="Kuromi Bag" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Kuromi Bag')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Kuromi Bag')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Kuromi Bag')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Kuromi Bag')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Kuromi Bag</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Kawaii</span>
+                <span class="trait"><i class="fas fa-gem"></i> Stylish</span>
+                <span class="trait"><i class="fas fa-star"></i> Trendy</span>
+              </div>
+              <p class="product-story">A stylish bag that's perfect for any kawaii fashion enthusiast!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 2,700</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Kuromi Bag')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hello Kitty Dress Plushie -->
+          <div class="product-card" data-category="plushies" data-moods="kawaii,cute">
+            <div class="product-image">
+              <img src="images/hello kitty dress.png" alt="Hello Kitty Dress Plushie" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Hello Kitty Dress Plushie')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Hello Kitty Dress Plushie')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Hello Kitty Dress Plushie')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Hello Kitty Dress Plushie')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Hello Kitty Dress Plushie</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Kawaii</span>
+                <span class="trait"><i class="fas fa-smile"></i> Cute</span>
+                <span class="trait"><i class="fas fa-gem"></i> Elegant</span>
+              </div>
+              <p class="product-story">A beautiful Hello Kitty plushie wearing a lovely dress!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,999</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Hello Kitty Dress Plushie')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hugging Cat Plushie -->
+          <div class="product-card" data-category="plushies" data-moods="cute,kawaii">
+            <div class="product-image">
+              <img src="images/huggable kitty.png" alt="Hugging Cat Plushie" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Hugging Cat Plushie')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Hugging Cat Plushie')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Hugging Cat Plushie')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Hugging Cat Plushie')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Hugging Cat Plushie</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Loving</span>
+                <span class="trait"><i class="fas fa-smile"></i> Cute</span>
+                <span class="trait"><i class="fas fa-cloud"></i> Cuddly</span>
+              </div>
+              <p class="product-story">A super soft cat plushie that's perfect for hugs and cuddles!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,400</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Hugging Cat Plushie')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fluffy Elephant Plushie -->
+          <div class="product-card" data-category="plushies" data-moods="cute,kawaii">
+            <div class="product-image">
+              <img src="images/elephant.png" alt="Fluffy Elephant Plushie" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Fluffy Elephant Plushie')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Fluffy Elephant Plushie')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Fluffy Elephant Plushie')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Fluffy Elephant Plushie')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Fluffy Elephant Plushie</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Gentle</span>
+                <span class="trait"><i class="fas fa-smile"></i> Cute</span>
+                <span class="trait"><i class="fas fa-cloud"></i> Fluffy</span>
+              </div>
+              <p class="product-story">A super soft elephant plushie that's perfect for snuggles!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,600</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Fluffy Elephant Plushie')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bunny Bouquet -->
+          <div class="product-card" data-category="plushies" data-moods="kawaii,cute">
+            <div class="product-image">
+              <img src="images/B7E2563B8D2E2B5442A0E7EFA0958F2C.jpg" alt="Bunny Bouquet" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Bunny Bouquet')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Bunny Bouquet')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Bunny Bouquet')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Bunny Bouquet')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Bunny Bouquet</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Kawaii</span>
+                <span class="trait"><i class="fas fa-smile"></i> Cute</span>
+                <span class="trait"><i class="fas fa-gift"></i> Special</span>
+              </div>
+              <p class="product-story">A delightful bouquet of bunnies, perfect for gifting and decoration!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 2,499</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Bunny Bouquet')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cute Stitch Bear -->
+          <div class="product-card" data-category="plushies" data-moods="cute,kawaii">
+            <div class="product-image">
+              <img src="images/bear stitch.jpg" alt="Cute Stitch Bear" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Cute Stitch Bear')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Cute Stitch Bear')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Cute Stitch Bear')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Cute Stitch Bear')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Cute Stitch Bear</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Adorable</span>
+                <span class="trait"><i class="fas fa-smile"></i> Playful</span>
+                <span class="trait"><i class="fas fa-cloud"></i> Fluffy</span>
+              </div>
+              <p class="product-story">A unique fusion of Stitch and bear, perfect for cuddles and adventures!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,800</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Cute Stitch Bear')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Normal Hello Kitty -->
+          <div class="product-card" data-category="plushies" data-moods="kawaii,cute">
+            <div class="product-image">
+              <img src="images/hello kitty normal.png" alt="Normal Hello Kitty" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Normal Hello Kitty')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Normal Hello Kitty')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Normal Hello Kitty')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Normal Hello Kitty')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Normal Hello Kitty</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Classic</span>
+                <span class="trait"><i class="fas fa-smile"></i> Cute</span>
+                <span class="trait"><i class="fas fa-star"></i> Iconic</span>
+              </div>
+              <p class="product-story">The classic Hello Kitty plushie that everyone loves!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,600</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Normal Hello Kitty')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Cinnamon Bag -->
+          <div class="product-card" data-category="bags" data-moods="cute,stylish">
+            <div class="product-image">
+              <img src="images/cinnamon side.png" alt="Side Cinnamon Bag" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Side Cinnamon Bag')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Side Cinnamon Bag')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Side Cinnamon Bag')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Side Cinnamon Bag')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Side Cinnamon Bag</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Cute</span>
+                <span class="trait"><i class="fas fa-gem"></i> Stylish</span>
+                <span class="trait"><i class="fas fa-star"></i> Practical</span>
+              </div>
+              <p class="product-story">A practical and stylish side bag with a sweet cinnamon design!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 2,200</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Side Cinnamon Bag')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fluffy Kitten -->
+          <div class="product-card" data-category="plushies" data-moods="cute,kawaii">
+            <div class="product-image">
+              <img src="images/fluffy kitten.jpg" alt="Fluffy Kitten" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Fluffy Kitten')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Fluffy Kitten')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Fluffy Kitten')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Fluffy Kitten')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Fluffy Kitten</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Playful</span>
+                <span class="trait"><i class="fas fa-smile"></i> Cute</span>
+                <span class="trait"><i class="fas fa-cloud"></i> Super Soft</span>
+              </div>
+              <p class="product-story">An irresistibly soft kitten plushie that's perfect for endless cuddles!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,600</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Fluffy Kitten')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stitch with Ukulele -->
+          <div class="product-card" data-category="plushies" data-moods="kawaii,cute">
+            <div class="product-image">
+              <img src="images/stitch ocean.png" alt="Stitch with Ukulele" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Stitch with Ukulele')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Stitch with Ukulele')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Stitch with Ukulele')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Stitch with Ukulele')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Stitch with Ukulele</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Musical</span>
+                <span class="trait"><i class="fas fa-smile"></i> Tropical</span>
+                <span class="trait"><i class="fas fa-star"></i> Unique</span>
+              </div>
+              <p class="product-story">A tropical-themed Stitch plushie playing the ukulele, bringing island vibes to your home!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 2,000</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Stitch with Ukulele')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Normal Stitch -->
+          <div class="product-card" data-category="plushies" data-moods="kawaii,cute">
+            <div class="product-image">
+              <img src="images/stitch.png" alt="Normal Stitch" loading="lazy" />
+              <div class="mobile-action-left">
+                <button class="mobile-action-btn" onclick="openSizeGuide('Normal Stitch')" aria-label="Size Guide">
+                  <i class="fas fa-ruler"></i>
+                </button>
+              </div>
+              <div class="mobile-action-right">
+                <button class="mobile-action-btn" onclick="openQuickView('Normal Stitch')" aria-label="Quick View">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="product-overlay">
+                <div class="overlay-buttons">
+                  <button class="quick-view-btn" onclick="openQuickView('Normal Stitch')">
+                    <i class="fas fa-eye"></i> Quick View
+                  </button>
+                  <button class="size-guide-btn" onclick="openSizeGuide('Normal Stitch')">
+                    <i class="fas fa-ruler"></i> Size Guide
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Normal Stitch</h3>
+              <div class="personality-traits">
+                <span class="trait"><i class="fas fa-heart"></i> Mischievous</span>
+                <span class="trait"><i class="fas fa-smile"></i> Lovable</span>
+                <span class="trait"><i class="fas fa-star"></i> Classic</span>
+              </div>
+              <p class="product-story">The classic Stitch plushie that captures his playful and mischievous personality!</p>
+              <div class="product-footer">
+                <span class="product-price">KSh 1,800</span>
+                <button class="order-btn primary" onclick="openWhatsApp('Normal Stitch')">
+                  <i class="fab fa-whatsapp"></i> Order Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick View Modal -->
+    <div class="modal" id="quickViewModal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-body">
+          <!-- Product details will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div class="quiz-modal" id="quizModal">
+      <div class="quiz-content">
+        <button class="close-quiz" onclick="closeQuizModal()">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <!-- Quiz Start Screen -->
+        <div class="quiz-screen" id="quizStart">
+          <h2 class="neon-text">
+            <i class="fas fa-heart"></i> Plushie Match Quiz
+          </h2>
+          <p>
+            Let's find your perfect cuddly companion! Answer a few magical
+            questions to discover which plushie matches your personality.
+          </p>
+          <button class="match-button" onclick="startQuiz()">
+            Begin Journey <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Quiz Questions -->
+        <div class="quiz-screen quiz-questions" id="quizQuestions" style="display: none">
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+          <div class="question-container">
+            <!-- Questions will be inserted here by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Quiz Result -->
+        <div class="quiz-screen" id="quizResult" style="display: none">
+          <div class="result-container">
+            <img src="" alt="Your Perfect Plushie" class="result-image" />
+            <h2 class="neon-text">Your Perfect Match!</h2>
+            <p class="result-description"></p>
+            <div class="result-traits"></div>
+            <button class="match-button" onclick="window.location.href='products.html'">
+              Shop Now <i class="fas fa-shopping-cart"></i>
+            </button>
+            <button class="retry-button" onclick="resetQuiz()">
+              Try Again <i class="fas fa-redo"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+      <a href="index.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="products.html" class="nav-item active">
+        <i class="fas fa-gift"></i>
+        <span class="nav-label">Products</span>
+      </a>
+      <a href="javascript:void(0)" onclick="openQuizModal()" class="nav-item">
+        <i class="fas fa-paw"></i>
+        <span class="nav-label">Match</span>
+      </a>
+      <a href="customer-stories.html" class="nav-item">
+        <i class="fas fa-book-open"></i>
+        <span class="nav-label">Stories</span>
+      </a>
+      <a href="contact.html" class="nav-item">
+        <i class="fas fa-envelope"></i>
+        <span class="nav-label">Contact</span>
+      </a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: "ease-out",
+        once: true,
+      });
+    </script>
+    <script src="products.js"></script>
+    <script src="quiz.js"></script>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+      <a href="https://wa.me/254757608176" class="floating-button whatsapp-fab bounce-animation" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="fab-tooltip">Chat with Us</span>
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="social-links">
+          <a href="https://wa.me/254757608176" class="social-icon" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.instagram.com/lainika.inc/" class="social-icon" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/lainika.inc" class="social-icon" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+        <p class="footer-message">
+          Thanks for visiting Lainika <i class="fas fa-heart"></i> See you soon!
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

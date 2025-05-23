@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plushie Stories - Lainika</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stories.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">Lainika</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="products.html">Products</a>
+                    <a href="javascript:void(0)" onclick="openQuizModal()">Find Your Plushie</a>
+                    <a href="customer-stories.html" class="active">Stories</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="products.html" class="nav-item">
+            <i class="fas fa-gift"></i>
+            <span class="nav-label">Products</span>
+        </a>
+        <a href="javascript:void(0)" onclick="openQuizModal()" class="nav-item">
+            <i class="fas fa-paw"></i>
+            <span class="nav-label">Match</span>
+        </a>
+        <a href="customer-stories.html" class="nav-item active">
+            <i class="fas fa-book-open"></i>
+            <span class="nav-label">Stories</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+            <i class="fas fa-envelope"></i>
+            <span class="nav-label">Contact</span>
+        </a>
+    </nav>
+
+    <!-- Story Hero Section -->
+    <section class="story-hero">
+        <div class="story-hero-content">
+            <div class="story-intro" data-aos="fade-up">
+                <div class="story-badge">
+                    <i class="fas fa-wand-sparkles"></i>
+                    <span>Magical Stories</span>
+                </div>
+                <h1>Where Plushie Dreams<br>Come to Life</h1>
+                <p>Every plushie has a unique story, and every story creates lasting memories.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rose Petals Animation Container -->
+    <div class="rose-petals-container" aria-hidden="true">
+        <!-- Rose petals will be added dynamically via JavaScript -->
+    </div>
+
+    <!-- Polaroid Gallery Section -->
+    <section class="polaroid-gallery">
+        <div class="gallery-header" data-aos="fade-up">
+            <h2>Our Plushie Family</h2>
+            <p>Where memories and magic come together</p>
+        </div>
+        
+        <div class="polaroid-container">
+            <!-- Polaroid 1 -->
+            <div class="polaroid" data-aos="fade-up">
+                <div class="polaroid-image placeholder">
+                    <i class="fas fa-heart"></i>
+                    <div class="placeholder-text">Your Story Here</div>
+                </div>
+                <div class="polaroid-caption">
+                    <h3>First Cuddle</h3>
+                    <p>"The moment you first hold your plushie, a new friendship begins"</p>
+                    <div class="polaroid-tags">
+                        <span><i class="fas fa-heart"></i> New Beginnings</span>
+                        <span><i class="fas fa-house-heart"></i> Family</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Polaroid 2 -->
+            <div class="polaroid" data-aos="fade-up" data-aos-delay="100">
+                <div class="polaroid-image placeholder">
+                    <i class="fas fa-star"></i>
+                    <div class="placeholder-text">Your Story Here</div>
+                </div>
+                <div class="polaroid-caption">
+                    <h3>Bedtime Adventures</h3>
+                    <p>"Every night becomes a magical journey with your plushie companion"</p>
+                    <div class="polaroid-tags">
+                        <span><i class="fas fa-moon"></i> Dreams</span>
+                        <span><i class="fas fa-gift"></i> Comfort</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Polaroid 3 -->
+            <div class="polaroid" data-aos="fade-up" data-aos-delay="200">
+                <div class="polaroid-image placeholder">
+                    <i class="fas fa-sparkles"></i>
+                    <div class="placeholder-text">Your Story Here</div>
+                </div>
+                <div class="polaroid-caption">
+                    <h3>Daily Joy</h3>
+                    <p>"From morning cuddles to evening snuggles, every moment is special"</p>
+                    <div class="polaroid-tags">
+                        <span><i class="fas fa-sun"></i> Happiness</span>
+                        <span><i class="fas fa-heart"></i> Love</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Your Story -->
+    <section class="share-story">
+        <div class="share-wrapper" data-aos="fade-up">
+            <div class="share-content">
+                <h2>Be Part of Our Story</h2>
+                <p>Your plushie journey is just beginning. Share your magical moments with us!</p>
+                <div class="share-benefits">
+                    <div class="benefit-card">
+                        <i class="fas fa-gift-card"></i>
+                        <h4>Special Rewards</h4>
+                        <p>Get exclusive discounts on your next adoption</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-heart-circle-plus"></i>
+                        <h4>Inspire Others</h4>
+                        <p>Help others find their perfect companion</p>
+                    </div>
+                    <div class="benefit-card">
+                        <i class="fas fa-star-shooting"></i>
+                        <h4>Get Featured</h4>
+                        <p>Your story could be the next one we share</p>
+                    </div>
+                </div>
+                <button class="share-story-btn" onclick="window.location.href='contact.html'">
+                    <i class="fas fa-feather-pointed"></i>
+                    Start Your Story
+                    <i class="fas fa-sparkles"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Button -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/254757608176" class="floating-button whatsapp-fab" aria-label="Share your story on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="fab-tooltip">Share Your Story</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://wa.me/254757608176" class="social-icon whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com/lainika.inc" class="social-icon instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://facebook.com/lainika.inc" class="social-icon facebook" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+            <p class="footer-message">
+                Thanks for visiting Lainika <i class="fas fa-heart-pulse"></i> See you soon!
+            </p>
+        </div>
+    </footer>
+
+    <!-- Quiz Modal -->
+    <div class="quiz-modal" id="quizModal">
+        <div class="quiz-content">
+            <button class="close-quiz" onclick="closeQuizModal()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Quiz Start Screen -->
+            <div class="quiz-screen" id="quizStart">
+                <h2 class="neon-text">
+                    <i class="fas fa-heart"></i> Plushie Match Quiz
+                </h2>
+                <p>
+                    Let's find your perfect cuddly companion! Answer a few magical
+                    questions to discover which plushie matches your personality.
+                </p>
+                <button class="match-button" onclick="startQuiz()">
+                    Begin Journey <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Quiz Questions -->
+            <div class="quiz-screen quiz-questions" id="quizQuestions" style="display: none">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="question-container">
+                    <!-- Questions will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Quiz Result -->
+            <div class="quiz-screen" id="quizResult" style="display: none">
+                <div class="result-container">
+                    <img src="" alt="Your Perfect Plushie" class="result-image" />
+                    <h2 class="neon-text">Your Perfect Match!</h2>
+                    <p class="result-description"></p>
+                    <div class="result-traits"></div>
+                    <button class="match-button" onclick="window.location.href='products.html'">
+                        Shop Now <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    <button class="retry-button" onclick="resetQuiz()">
+                        Try Again <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: "ease-out",
+            once: true,
+        });
+    </script>
+    <script src="quiz.js"></script>
+    <script src="stories.js"></script>
+</body>
+</html> 

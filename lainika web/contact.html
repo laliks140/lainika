@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Lainika</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="contact.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <div class="container">
+        <div class="nav-container">
+          <a href="index.html" class="logo">Lainika</a>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="javascript:void(0)" onclick="openQuizModal()">Find Your Plushie</a>
+            <a href="customer-stories.html">Stories</a>
+            <a href="contact.html" class="active">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+      <div class="container">
+        <h1 class="neon-text">Get in Touch <i class="fas fa-sparkles"></i></h1>
+        <p class="subtitle">
+          We're here to help you find your perfect plushie companion!
+        </p>
+        <p class="hero-message">
+          Every plushie comes with custom adoption certificates and gift wrapping – 
+          let's make yours special! <i class="fas fa-heart"></i>
+        </p>
+        <div class="floating-icons">
+          <i class="fas fa-heart"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-gift"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Methods -->
+    <section class="contact-methods">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Direct WhatsApp -->
+          <div class="contact-card whatsapp-card" data-aos="fade-up">
+            <div class="card-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <h3>WhatsApp Us</h3>
+            <p>
+              Quick responses within minutes! We're here to help you choose your
+              perfect plushie.
+            </p>
+            <a
+              href="https://wa.me/254757608176"
+              class="contact-button whatsapp-button"
+            >
+              <i class="fab fa-whatsapp"></i>
+              Chat on WhatsApp
+              <span class="button-shine"></span>
+            </a>
+          </div>
+
+          <!-- Direct Call -->
+          <div
+            class="contact-card call-card"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="card-icon">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <h3>Call Us</h3>
+            <p>
+              Available 9 AM - 6 PM (EAT). Let's talk about your plushie
+              preferences!
+            </p>
+            <a href="tel:+254757608176" class="contact-button call-button">
+              <i class="fas fa-phone"></i>
+              +254 757 608 176
+              <span class="button-shine"></span>
+            </a>
+          </div>
+
+          <!-- Social Media -->
+          <div
+            class="contact-card social-card"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="card-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3>Follow Us</h3>
+            <p>
+              Stay updated with new plushies, special offers, and cute content!
+            </p>
+            <div class="social-links">
+              <a
+                href="https://www.instagram.com/lainika.inc/"
+                class="social-link instagram"
+                title="Follow us on Instagram"
+                target="_blank"
+              >
+                <i class="fab fa-instagram"></i>
+                <span class="social-shine"></span>
+              </a>
+              <a
+                href="https://www.facebook.com/lainika.inc"
+                class="social-link facebook"
+                title="Like us on Facebook"
+                target="_blank"
+              >
+                <i class="fab fa-facebook"></i>
+                <span class="social-shine"></span>
+              </a>
+              <a
+                href="https://www.tiktok.com/@lainika.inc"
+                class="social-link tiktok"
+                title="Follow us on TikTok"
+                target="_blank"
+              >
+                <i class="fab fa-tiktok"></i>
+                <span class="social-shine"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="neon-text">
+          Frequently Asked Questions <i class="fas fa-question-circle"></i>
+        </h2>
+        <div class="faq-grid">
+          <div class="faq-item" data-aos="fade-right">
+            <h3><i class="fas fa-truck"></i> Delivery Information</h3>
+            <p>We deliver all across Kenya. Delivery times vary by location:</p>
+            <ul class="faq-list">
+              <li><i class="fas fa-check"></i> Same day delivery for Nairobi!</li>
+              <li>
+                <i class="fas fa-check"></i> Other major towns: 2-3 business
+                days
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Rest of Kenya: 3-4 business days
+              </li>
+            </ul>
+          </div>
+          <div class="faq-item" data-aos="fade-right" data-aos-delay="100">
+            <h3><i class="fas fa-credit-card"></i> Payment Methods</h3>
+            <p>We offer multiple convenient payment options:</p>
+            <ul class="faq-list">
+              <li><i class="fas fa-check"></i> M-Pesa (Preferred)</li>
+              <li><i class="fas fa-check"></i> Bank transfers</li>
+              <li>
+                <i class="fas fa-check"></i> Cash on delivery (Nairobi only)
+              </li>
+            </ul>
+          </div>
+          <div class="faq-item" data-aos="fade-right" data-aos-delay="200">
+            <h3><i class="fas fa-exchange-alt"></i> Return Policy</h3>
+            <p>Your satisfaction is our priority:</p>
+            <ul class="faq-list">
+              <li><i class="fas fa-check"></i> 7-day return window</li>
+              <li>
+                <i class="fas fa-check"></i> Item must be unused with tags
+              </li>
+              <li><i class="fas fa-check"></i> Original packaging required</li>
+            </ul>
+          </div>
+          <div class="faq-item" data-aos="fade-right" data-aos-delay="300">
+            <h3><i class="fas fa-clock"></i> Business Hours</h3>
+            <p>Visit us during these hours:</p>
+            <ul class="faq-list">
+              <li>
+                <i class="fas fa-check"></i> Monday to Friday: 9 AM - 6 PM
+              </li>
+              <li><i class="fas fa-check"></i> Saturday: 10 AM - 4 PM</li>
+              <li><i class="fas fa-check"></i> Sunday: Closed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Review Section -->
+    <section class="review-section" data-aos="fade-up">
+      <div class="container">
+        <h2 class="neon-text">
+          Love Our Plushies? <i class="fas fa-star"></i>
+        </h2>
+        <p class="review-subtitle">
+          Share your experience and help others find their perfect plushie
+          companion!
+        </p>
+
+        <div class="review-card">
+          <div class="rating-preview">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="rating-text">Rate us on Google</p>
+          </div>
+          <a
+            href="https://search.google.com/local/writereview?placeid=YOUR-PLACE-ID"
+            target="_blank"
+            class="review-button"
+            onclick="window.open(this.href, '_blank', 'width=800,height=800'); return false;"
+          >
+            <i class="fab fa-google"></i>
+            Write a Review
+            <span class="button-shine"></span>
+          </a>
+        </div>
+
+        <!-- Google Review Widget -->
+        <div class="google-reviews">
+          <div class="elfsight-app-YOUR-WIDGET-ID"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+      <div class="container">
+        <h2 class="neon-text">
+          Visit Our Store <i class="fas fa-map-marker-alt"></i>
+        </h2>
+        <div class="location-card" data-aos="zoom-in">
+          <div class="location-info">
+            <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+            <p><i class="far fa-clock"></i> Mon-Sat: 9 AM - 6 PM</p>
+            <p><i class="fas fa-phone"></i> +254 757 608 176</p>
+          </div>
+          <div class="map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.818917447097!2d36.81679081475857!3d-1.2833337359803738!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d22f42bf35%3A0x6e76dd67eebf4c0d!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2s!4v1647940434368!5m2!1sen!2s"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quiz Modal -->
+    <div class="quiz-modal" id="quizModal">
+      <div class="quiz-content">
+        <button class="close-quiz" onclick="closeQuizModal()">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <!-- Quiz Start Screen -->
+        <div class="quiz-screen" id="quizStart">
+          <h2 class="neon-text">
+            <i class="fas fa-heart"></i> Plushie Match Quiz
+          </h2>
+          <p>
+            Let's find your perfect cuddly companion! Answer a few magical
+            questions to discover which plushie matches your personality.
+          </p>
+          <button class="match-button" onclick="startQuiz()">
+            Begin Journey <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Quiz Questions -->
+        <div class="quiz-screen quiz-questions" id="quizQuestions" style="display: none">
+          <div class="progress-bar">
+            <div class="progress"></div>
+          </div>
+          <div class="question-container">
+            <!-- Questions will be inserted here by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Quiz Result -->
+        <div class="quiz-screen" id="quizResult" style="display: none">
+          <div class="result-container">
+            <img src="" alt="Your Perfect Plushie" class="result-image" />
+            <h2 class="neon-text">Your Perfect Match!</h2>
+            <p class="result-description"></p>
+            <div class="result-traits"></div>
+            <button class="match-button" onclick="window.location.href='products.html'">
+              Shop Now <i class="fas fa-shopping-cart"></i>
+            </button>
+            <button class="retry-button" onclick="resetQuiz()">
+              Try Again <i class="fas fa-redo"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+      <a href="index.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span class="nav-label">Home</span>
+      </a>
+      <a href="products.html" class="nav-item">
+        <i class="fas fa-gift"></i>
+        <span class="nav-label">Products</span>
+      </a>
+      <a href="javascript:void(0)" onclick="openQuizModal()" class="nav-item">
+        <i class="fas fa-paw"></i>
+        <span class="nav-label">Match</span>
+      </a>
+      <a href="customer-stories.html" class="nav-item">
+        <i class="fas fa-book-open"></i>
+        <span class="nav-label">Stories</span>
+      </a>
+      <a href="contact.html" class="nav-item active">
+        <i class="fas fa-envelope"></i>
+        <span class="nav-label">Contact</span>
+      </a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: "ease-out",
+        once: true,
+      });
+    </script>
+    <script src="quiz.js"></script>
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="social-links">
+          <a href="https://wa.me/254757608176" class="social-icon" title="Chat on WhatsApp" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.instagram.com/lainika.inc/" class="social-icon" title="Follow on Instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.facebook.com/lainika.inc" class="social-icon" title="Like on Facebook" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </div>
+        <p class="footer-message">
+          Thanks for visiting Lainika <i class="fas fa-heart"></i> See you soon!
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
